@@ -1,0 +1,53 @@
+Aufgabe:
+- Design a Parking application for the city of Vence
+
+Requisite:
+- Differentiate Auto from Moto
+- Each plate should appear only once
+- Garage should be on more floors
+- Floors and Spots on each floor should be assigned dynamically because we still don't know how many
+    floors and spots there will be
+- Vehicles should find a free spot and park on it as well as unpark
+
+
+Main Structure. Classes:
+
+        ParkingLevel:
+            Represents a level in the parking garage
+            Contains a list of ParkingSpot objects
+            Has methods to park a vehicle, unpark a vehicle, and count the available spots
+            Uses an ArrayList to hold the parking spots
+
+        ParkingSpot:
+            Represents an individual parking spot.
+            Contains a Vehicle object and a boolean isOccupied to track if the spot is taken
+            Has methods to park a vehicle, unpark a vehicle, and check if the spot is occupied
+
+        Vehicle:
+            Abstract class that serves as a base for different types of vehicles
+            Contains a licensePlate attribute
+             // license plate should be unique and exist only once. Usually I would do it with a DB, for this purpose
+                I created an array that gets checked everytime a new Vehicle is created
+            Has a constructor and a getter method for the license plate
+
+        VehicleCar:
+            Subclass of Vehicle, representing cars
+            Uses the constructor of the superclass Vehicle to initialize the license plate
+
+        VehicleMotorcycle:
+            Subclass of Vehicle, representing motorcycles
+            Uses the constructor of the superclass Vehicle to initialize the license plate
+
+        ParkingGarage:
+            Represents the entire parking garage
+            Contains a list of ParkingLevels
+            Provides two constructors
+                    - For uniformly distributed spots across levels
+                    - For variably distributed spots across levels
+            Offers methods to park a vehicle (by checking each level), unpark a vehicle, find a vehicle's position, and check the total number of available spots across all levels
+
+
+ParkingGarage should be able to create new floors and assign parking spots to each floor
+We need to face the scenario that every floor could accommodate different number of spots
+Through constructor overloading we can use 2 different constructors as long as they have different signatures
+
