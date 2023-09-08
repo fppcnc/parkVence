@@ -3,8 +3,6 @@ package com.garageapp.ui;
 import javax.swing.*;
 import javax.swing.text.NumberFormatter;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.text.NumberFormat;
 
 public class StaticGarageSetup extends JFrame {

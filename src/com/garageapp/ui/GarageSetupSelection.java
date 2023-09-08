@@ -4,9 +4,9 @@ package com.garageapp.ui;
 import javax.swing.*;
 import java.awt.*;
 
-public class MainWindow extends JFrame {
+public class GarageSetupSelection extends JFrame {
 
-    public MainWindow() {
+    public GarageSetupSelection() {
         setTitle("Garage Vence");
         setSize(500, 200);
         setLocationRelativeTo(null);

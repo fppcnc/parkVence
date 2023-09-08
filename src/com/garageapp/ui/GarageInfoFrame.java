@@ -12,36 +12,34 @@ public class GarageInfoFrame extends JFrame {
         this.garage = garage;
 
         //frame setup
-        setTitle("Garage Information");
-        setSize(500, 300);
+        setTitle("Informationen Garage");
+        setSize(500, 200);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setLayout(new GridLayout(1, 2)); // Split the frame into two sections
+        setLayout(new GridLayout(1, 2));
 
         //left side: Information display
-        JPanel infoPanel = new JPanel(new GridLayout(5, 1)); // Adjust as needed
-        infoPanel.add(new JLabel("Total Levels: " + garage.getTotalLevels()));
-        infoPanel.add(new JLabel("Total Spots: " + garage.getTotalSpots()));
-        infoPanel.add(new JLabel("Available Spots: " + garage.availableSpots()));
+        JPanel infoPanel = new JPanel(new GridLayout(3, 1));
+        infoPanel.add(new JLabel("Etagen: " + garage.getTotalLevels()));
+        infoPanel.add(new JLabel("Stellplätze: " + garage.getTotalSpots()));
+        infoPanel.add(new JLabel("Freie Stellplätze: " + garage.availableSpots()));
         add(infoPanel);
 
         //right side: Action buttons
         JPanel actionPanel = new JPanel(new GridLayout(3, 1));
         JButton parkVehicleButton = new JButton("Park Vehicle");
-        parkVehicleButton.addActionListener(e -> {
-            //redirect to a frame for parking a vehicle
-        });
+            parkVehicleButton.addActionListener(e -> new VehicleActionFrame(garage, VehicleActionFrame.ActionType.PARK).setVisible(true));
         JButton unParkVehicleButton = new JButton("Unpark Vehicle");
-        unParkVehicleButton.addActionListener(e -> {
-            //redirect to a frame for unparking a vehicle
-        });
+            unParkVehicleButton.addActionListener(e -> new VehicleActionFrame(garage, VehicleActionFrame.ActionType.UNPARK).setVisible(true));
         JButton findVehicleButton = new JButton("Find Vehicle");
-        findVehicleButton.addActionListener(e -> {
-            //redirect to a frame for finding a vehicle
-        });
+            findVehicleButton.addActionListener(e -> new VehicleActionFrame(garage, VehicleActionFrame.ActionType.FIND).setVisible(true));
         actionPanel.add(parkVehicleButton);
         actionPanel.add(unParkVehicleButton);
         actionPanel.add(findVehicleButton);
         add(actionPanel);
     }
 }
+
+
+
+
