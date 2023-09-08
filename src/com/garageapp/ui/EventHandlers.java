@@ -1,5 +1,7 @@
 package com.garageapp.ui;
 
+import com.garageapp.model.ParkingGarage;
+
 import javax.swing.*;
 
 public class EventHandlers {
@@ -26,9 +28,10 @@ public class EventHandlers {
         System.out.println("Dynamic Garage Selected");
     }
 
-    static void handleStaticSetup(int numLevels, int spotsPerLevel) {
-        System.out.println("Setting up static garage with " + numLevels + " levels and " + spotsPerLevel + " spots per level.");
-
+    static void handleStaticSetup(int numLevels, int spotsPerLevel, StaticGarageSetup staticGarageSetup) {
+        ParkingGarage garage = new ParkingGarage(numLevels, spotsPerLevel);
+        new GarageInfoFrame(garage).setVisible(true);
+staticGarageSetup.dispose();
     }
 
 }

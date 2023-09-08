@@ -29,31 +29,31 @@ public class StaticGarageSetup extends JFrame {
         formatter.setMinimum(0);
         formatter.setMaximum(Integer.MAX_VALUE);
 
-        //will go through only on valid inputs. int in this case
+        //will go ahead only on valid inputs
         formatter.setAllowsInvalid(false);
         formatter.setCommitsOnValidEdit(true);
 
-        add(new JLabel()); //dummy for positioning
 
         JLabel numLevelsLabel = new JLabel("Anzahl der Etagen:");
         numLevelsField = new JFormattedTextField(formatter);
-        add(numLevelsLabel);
-        add(numLevelsField);
+
 
         JLabel spotsPerLevelLabel = new JLabel("Parkplätze pro Etage:");
         spotsPerLevelField = new JFormattedTextField(formatter);
-        add(spotsPerLevelLabel);
-        add(spotsPerLevelField);
+
 
         JButton setupButton = new JButton("Garage Setup");
         setupButton.addActionListener(e -> EventHandlers.handleStaticSetup(
                 ((Number) numLevelsField.getValue()).intValue(),
-                ((Number) spotsPerLevelField.getValue()).intValue()
+                ((Number) spotsPerLevelField.getValue()).intValue(),
+                this
         ));
 
-
-
-
+        add(numLevelsLabel);
+        add(numLevelsField);
+        add(spotsPerLevelLabel);
+        add(spotsPerLevelField);
+        add(new JLabel()); //dummy for positioning
         add(setupButton);
     }
 

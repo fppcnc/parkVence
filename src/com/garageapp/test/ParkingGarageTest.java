@@ -24,13 +24,13 @@ public class ParkingGarageTest {
 
     @Test
     public void testConstructor1() {
-        assertEquals(3, garage1.getNumberOfLevels());
+        assertEquals(3, garage1.getTotalLevels());
         assertEquals(30, garage1.getTotalSpots());
     }
 
     @Test
     public void testConstructor2() {
-        assertEquals(3, garage2.getNumberOfLevels());
+        assertEquals(3, garage2.getTotalLevels());
         assertEquals(30, garage2.getTotalSpots());
     }
 

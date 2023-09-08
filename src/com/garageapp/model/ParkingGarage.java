@@ -6,13 +6,13 @@ import java.util.List;
 public class ParkingGarage {
     private List<ParkingLevel> levels;
 
-    public int getNumberOfLevels() {
+    public int getTotalLevels() {
         return levels.size();
     }
 
     private int totalSpots;
 
-    //getter
+
     public int getTotalSpots() {
         return totalSpots;
     }
