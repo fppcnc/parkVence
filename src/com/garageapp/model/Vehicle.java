@@ -1,27 +1,50 @@
 package com.garageapp.model;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 public abstract class Vehicle {
     protected String licensePlate;
 
-    //static list will travel through different instances. new vehicles is added if no match is found
-    protected static List<String> registeredLicensePlates = new ArrayList<>();
+    // Map to store registered license plates with their status
+    protected static Map<String, VehicleStatus> registeredLicensePlates = new HashMap<>();
 
-    public Vehicle(String licensePlate) throws Exception {
-        if (registeredLicensePlates.contains(licensePlate)) {
-            throw new Exception ("bereits verwendetes Nummernschild");
+    public Vehicle(String licensePlate, String vehicleType) throws Exception {
+        if (registeredLicensePlates.containsKey(licensePlate)) {
+            VehicleStatus status = registeredLicensePlates.get(licensePlate);
+            if (status.vehicleType.equals(vehicleType) && !status.isParked) {
+                this.licensePlate = licensePlate;
+            } else {
+                throw new Exception("Das Nummernschild wird bereits für einen anderen Typ verwendet oder ist geparkt.");
+            }
+        } else {
+            this.licensePlate = licensePlate;
+            registeredLicensePlates.put(licensePlate, new VehicleStatus(vehicleType));
         }
-        this.licensePlate = licensePlate;
-        registeredLicensePlates.add(licensePlate);
     }
 
     public String getLicensePlate() {
         return licensePlate;
     }
 
-    public static List<String> getRegisteredLicensePlates() {
+    public static Map<String, VehicleStatus> getRegisteredLicensePlates() {
         return registeredLicensePlates;
+    }
+
+    public static void setParkedStatus(String licensePlate, boolean isParked) {
+        if (registeredLicensePlates.containsKey(licensePlate)) {
+            registeredLicensePlates.get(licensePlate).isParked = isParked;
+        }
+    }
+
+    //nested class to store the status of a vehicle
+    protected static class VehicleStatus {
+        String vehicleType;
+        boolean isParked;
+
+        VehicleStatus(String vehicleType) {
+            this.vehicleType = vehicleType;
+            this.isParked = false;
+        }
     }
 }

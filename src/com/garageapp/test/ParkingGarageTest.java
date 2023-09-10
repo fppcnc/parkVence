@@ -44,7 +44,7 @@ public class ParkingGarageTest {
         String result2 = garage1.parkVeichle(v2);
         assertEquals("Fahrzeug " + v2.getLicensePlate() + " erfolgreich eingeparkt.", result2);
 
-        String result3 = garage1.unParkVehicle(v1);
+        String result3 = garage1.unParkVehicle(v1.getLicensePlate());
         assertEquals("Fahrzeug " + v1.getLicensePlate() + " erfolgreich ausgeparkt.", result3);
     }
 

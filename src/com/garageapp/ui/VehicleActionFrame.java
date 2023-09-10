@@ -55,7 +55,7 @@ public class VehicleActionFrame extends JFrame {
                     message = garage.parkVeichle(vehicle);
                     break;
                 case UNPARK:
-                    message = garage.unParkVehicle();  // Assuming you can unpark using the base Vehicle type
+                    message = garage.unParkVehicle(licensePlate);  // Assuming you can unpark using the base Vehicle type
                     break;
                 case FIND:
                     message = garage.findVehicleSpot(licensePlate);

@@ -30,7 +30,7 @@ public class ParkingLevelTest {
         Vehicle v2 = new VehicleMotorcycle("ABC988");
         assertTrue(level.parkVehicle(v2), "com.garageapp.models.Vehicle ABC988 should be parked successfully");
 
-        assertTrue(level.unParkVehicle(v1), "com.garageapp.models.Vehicle XYZ126 should be unparked successfully");
+        assertTrue(level.unParkVehicle(v1.getLicensePlate()), "com.garageapp.models.Vehicle XYZ126 should be unparked successfully");
     }
 
     @Test

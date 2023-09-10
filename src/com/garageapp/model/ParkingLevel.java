@@ -23,9 +23,10 @@ public class ParkingLevel {
         return false;
     }
 
-    public boolean unParkVehicle(Vehicle vehicle) {
+
+    public boolean unParkVehicle(String licensePlate) {
         for (ParkingSpot spot : spots) {
-            if (spot.getVehicle() == vehicle) {
+            if (spot.isOccupied() && spot.getVehicle().getLicensePlate().equals(licensePlate)) {
                 spot.unPark();
                 return true;
             }

@@ -1,14 +1,16 @@
 Aufgabe:
+
 - Design a Parking application for the city of Vence
 
 Requisite:
+
 - Differentiate Auto from Moto
 - Each plate should appear only once
 - Garage should be on more floors
 - Floors and Spots on each floor should be assigned dynamically because we still don't know how many
     floors and spots there will be
 - Vehicles should find a free spot and park on it as well as unpark
-
+- Method to find where exactly a Vehicle is parked
 
 Main Structure. Classes:
 
@@ -28,6 +30,8 @@ Main Structure. Classes:
             Contains a licensePlate attribute
              // license plate should be unique and exist only once. Usually I would do it with a DB, for this purpose
                 I created an array that gets checked everytime a new Vehicle is created
+                 // array didn't make the cut. Switched to Map Interface
+                    (https://docs.oracle.com/javase/8/docs/api/java/util/Map.html)
             Has a constructor and a getter method for the license plate
 
         VehicleCar:
@@ -48,6 +52,6 @@ Main Structure. Classes:
 
 
 ParkingGarage should be able to create new floors and assign parking spots to each floor
-We need to face the scenario that every floor could accommodate different number of spots
-Through constructor overloading we can use 2 different constructors as long as they have different signatures
+There´s need to face a scenario in which every floor could accommodate different number of spots
+Through constructor overloading 2 different constructors can be used as long as they have different signatures
 

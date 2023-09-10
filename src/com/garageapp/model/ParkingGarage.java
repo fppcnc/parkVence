@@ -56,13 +56,13 @@ public class ParkingGarage {
         return "Leider, gibt´s kein freier Parkplatz für Fahrzeug " + vehicle.getLicensePlate() + ".";
     }
 
-    public String unParkVehicle(Vehicle vehicle) {
+    public String unParkVehicle(String licensePlate) {
         for (ParkingLevel level : levels) {
-            if (level.unParkVehicle(vehicle)) {
-                return "Fahrzeug " + vehicle.getLicensePlate() + " erfolgreich ausgeparkt.";
+            if (level.unParkVehicle(licensePlate)) {
+                return "Fahrzeug " + licensePlate + " erfolgreich ausgeparkt.";
             }
         }
-        return "Fahrzeug " + vehicle.getLicensePlate() + " nicht gefunden.";
+        return "Fahrzeug " + licensePlate + " nicht gefunden.";
     }
 
 

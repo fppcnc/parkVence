@@ -26,8 +26,8 @@ public class VehicleTest {
 
     @Test
     public void testUniqueLicensePlates() {
-        assertTrue(Vehicle.getRegisteredLicensePlates().contains("XYZ123"), "License plate " + car.getLicensePlate() + " should be registered");
-        assertTrue(Vehicle.getRegisteredLicensePlates().contains("ABC987"), "License plate " + motorcycle.getLicensePlate() + " should be registered");
+        assertTrue(Vehicle.getRegisteredLicensePlates().containsKey("XYZ123"), "License plate " + car.getLicensePlate() + " should be registered");
+        assertTrue(Vehicle.getRegisteredLicensePlates().containsKey("ABC987"), "License plate " + motorcycle.getLicensePlate() + " should be registered");
     }
 
     @Test
