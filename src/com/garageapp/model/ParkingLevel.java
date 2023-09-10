@@ -42,9 +42,9 @@ public class ParkingLevel {
                 spot.parkVehicle(vehicle);
                 availableSpots--;
                 if (availableSpots == 0) {
-                    return "Vehicle parked at spot " + spot.getSpotNumber() + ". This was the last available spot on this level.";
+                    return "Vehicle parked at level " + levelNumber + ", spot " + spot.getSpotNumber() + ". This was the last available spot on this level.";
                 }
-                return "Vehicle parked at spot " + spot.getSpotNumber();
+                return "Vehicle parked at level " + levelNumber + ", spot " + spot.getSpotNumber();
             }
         }
         return "No available spots on this level.";

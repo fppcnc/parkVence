@@ -55,3 +55,4 @@ ParkingGarage should be able to create new floors and assign parking spots to ea
 There´s need to face a scenario in which every floor could accommodate different number of spots
 Through constructor overloading 2 different constructors can be used as long as they have different signatures
 
+UnitTesting with JUnit
