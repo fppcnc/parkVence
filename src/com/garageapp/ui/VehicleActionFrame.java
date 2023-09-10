@@ -13,10 +13,12 @@ public class VehicleActionFrame extends JFrame {
     private ParkingGarage garage;
     private ActionType actionType;
     private JComboBox<String> vehicleTypeBox;
+    private GarageInfoFrame garageInfoFrame;
 
-    public VehicleActionFrame(ParkingGarage garage, ActionType actionType) {
+    public VehicleActionFrame(ParkingGarage garage, ActionType actionType,  GarageInfoFrame garageInfoFrame) {
         this.garage = garage;
         this.actionType = actionType;
+        this.garageInfoFrame = garageInfoFrame;
 
         // Basic setup for the frame
         setTitle("Vehicle Action");
@@ -26,8 +28,10 @@ public class VehicleActionFrame extends JFrame {
 
         JLabel licenseLabel = new JLabel("Enter Vehicle License Plate:");
         JTextField licenseField = new JTextField();
-        vehicleTypeBox = new JComboBox<>(new String[]{"Car", "Motorcycle"}); // JComboBox for vehicle type selection
+        vehicleTypeBox = new JComboBox<>(new String[]{"Car", "Motorcycle"});
         JButton submitButton = new JButton("Submit");
+        //display it only when park is selected
+        vehicleTypeBox.setVisible(actionType == ActionType.PARK);
 
         submitButton.addActionListener(e -> {
             String licensePlate = licenseField.getText();
@@ -39,6 +43,7 @@ public class VehicleActionFrame extends JFrame {
             String message = "";
             switch (actionType) {
                 case PARK:
+                    vehicleTypeBox.setVisible(true);
                     if ("Car".equals(vehicleType)) {
                         try {
                             vehicle = new VehicleCar(licensePlate);
@@ -52,25 +57,31 @@ public class VehicleActionFrame extends JFrame {
                             throw new RuntimeException(ex);
                         }
                     }
-                    message = garage.parkVeichle(vehicle);
+                    message = garage.parkVehicle(vehicle);
                     break;
                 case UNPARK:
-                    message = garage.unParkVehicle(licensePlate);  // Assuming you can unpark using the base Vehicle type
+                    message = garage.removeVehicle(licensePlate);
                     break;
                 case FIND:
-                    message = garage.findVehicleSpot(licensePlate);
+                    message = garage.getVehicleInfo(licensePlate);
                     break;
             }
 
-            // Display feedback
+            //display feedback
             JOptionPane.showMessageDialog(this, message);
-            new GarageInfoFrame(garage).setVisible(true); // Open new GarageInfoFrame with updated info
-            dispose(); // Close the current frame
+            //close the current frame and the GarageInfoFrame
+            this.dispose();
+            if (garageInfoFrame != null) {
+                garageInfoFrame.dispose();
+            }
+            //open a new GarageInfoFrame with updated info
+            new GarageInfoFrame(garage).setVisible(true);
+            dispose();
         });
 
         add(licenseLabel);
         add(licenseField);
-        add(vehicleTypeBox); // Add the JComboBox to the frame
+        add(vehicleTypeBox);
         add(submitButton);
     }
 

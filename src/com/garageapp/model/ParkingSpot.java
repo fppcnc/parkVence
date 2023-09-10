@@ -1,37 +1,31 @@
 package com.garageapp.model;
 
 public class ParkingSpot {
-    private Vehicle vehicle;
-    private boolean isOccupied;
+    private int spotNumber;
+    private Vehicle parkedVehicle;
 
-    public ParkingSpot() {
-        this.vehicle = null;
-        this.isOccupied = false;
-    }
-
-    public boolean park(Vehicle vehicle) {
-        if (isOccupied) {
-            return false;
-        }
-        this.vehicle = vehicle;
-        this.isOccupied = true;
-        return true;
-    }
-
-    public boolean unPark() {
-        if (!isOccupied) {
-            return false;
-        }
-        this.vehicle = null;
-        this.isOccupied = false;
-        return true;
-    }
-
-    public Vehicle getVehicle() {
-        return vehicle;
+    public ParkingSpot(int spotNumber) {
+        this.spotNumber = spotNumber;
+        this.parkedVehicle = null;
     }
 
     public boolean isOccupied() {
-        return isOccupied;
+        return parkedVehicle != null;
+    }
+
+    public Vehicle getParkedVehicle() {
+        return parkedVehicle;
+    }
+
+    public void parkVehicle(Vehicle vehicle) {
+        this.parkedVehicle = vehicle;
+    }
+
+    public void removeVehicle() {
+        this.parkedVehicle = null;
+    }
+
+    public int getSpotNumber() {
+        return spotNumber;
     }
 }

@@ -19,24 +19,26 @@ public class GarageInfoFrame extends JFrame {
         setLayout(new GridLayout(1, 2));
 
         //left side: Information display
-        JPanel infoPanel = new JPanel(new GridLayout(3, 1));
+        JPanel infoPanel = new JPanel(new GridLayout(4, 1));
         infoPanel.add(new JLabel("Etagen: " + garage.getTotalLevels()));
         infoPanel.add(new JLabel("Stellplätze: " + garage.getTotalSpots()));
-        infoPanel.add(new JLabel("Freie Stellplätze: " + garage.availableSpots()));
+        infoPanel.add(new JLabel("Freie Stellplätze: " + garage.getTotalAvailableSpots()));
+        infoPanel.add(new JLabel("Besetzte Stellplätze: " + garage.getTotalOccupiedSpots()));
         add(infoPanel);
 
         //right side: Action buttons
         JPanel actionPanel = new JPanel(new GridLayout(3, 1));
         JButton parkVehicleButton = new JButton("Park Vehicle");
-            parkVehicleButton.addActionListener(e -> new VehicleActionFrame(garage, VehicleActionFrame.ActionType.PARK).setVisible(true));
+            parkVehicleButton.addActionListener(e -> new VehicleActionFrame(garage, VehicleActionFrame.ActionType.PARK, this).setVisible(true));
         JButton unParkVehicleButton = new JButton("Unpark Vehicle");
-            unParkVehicleButton.addActionListener(e -> new VehicleActionFrame(garage, VehicleActionFrame.ActionType.UNPARK).setVisible(true));
+            unParkVehicleButton.addActionListener(e -> new VehicleActionFrame(garage, VehicleActionFrame.ActionType.UNPARK, this).setVisible(true));
         JButton findVehicleButton = new JButton("Find Vehicle");
-            findVehicleButton.addActionListener(e -> new VehicleActionFrame(garage, VehicleActionFrame.ActionType.FIND).setVisible(true));
+            findVehicleButton.addActionListener(e -> new VehicleActionFrame(garage, VehicleActionFrame.ActionType.FIND, this).setVisible(true));
         actionPanel.add(parkVehicleButton);
         actionPanel.add(unParkVehicleButton);
         actionPanel.add(findVehicleButton);
         add(actionPanel);
+        dispose();
     }
 }
 
