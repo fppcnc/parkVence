@@ -36,12 +36,10 @@ public class ParkingGarage {
     }
 
     public String parkVehicle(Vehicle vehicle) {
-        System.out.println("In ParkingGarage, attempting to park vehicle with license: " + vehicle.getLicensePlate() + " and type: " + vehicle.getVehicleType());
 
         for (ParkingLevel level : levels) {
             String parkingResult = level.parkVehicle(vehicle);
             if (!parkingResult.contains("No available spot")) {
-                System.out.println("Vehicle parked successfully in ParkingGarage with result: " + parkingResult);
                 return parkingResult;
             }
         }

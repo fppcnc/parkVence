@@ -30,28 +30,19 @@ public class ParkingLevel {
     }
 
     public String parkVehicle(Vehicle vehicle) {
-        System.out.println("Attempting to park vehicle with license: " + vehicle.getLicensePlate() + " and type: " + vehicle.getVehicleType());
-
-        // Check if a vehicle with the same license plate is already parked
+        //check if a vehicle with the same license plate is already parked
         for (ParkingSpot spot : spots) {
             if (spot.isOccupied() && spot.getParkedVehicle().getLicensePlate().equals(vehicle.getLicensePlate())) {
-                System.out.println("Found a vehicle with the same license: " + vehicle.getLicensePlate() + " and type: " + spot.getParkedVehicle().getVehicleType());
-                if (spot.getParkedVehicle().getVehicleType() == vehicle.getVehicleType()) {
-                    return "Vehicle with license plate " + vehicle.getLicensePlate() + " is already parked.";
-                } else {
                     return "A " + spot.getParkedVehicle().getVehicleType() + " with license plate " + vehicle.getLicensePlate() + " is already parked.";
-                }
             }
         }
-
-
-        // If not, then find an available spot and park the vehicle
+        //if not, then find an available spot and park the vehicle
         for (ParkingSpot spot : spots) {
             if (!spot.isOccupied()) {
                 spot.parkVehicle(vehicle);
                 availableSpots--;
                 if (availableSpots == 0) {
-                    return "Vehicle parked at spot " + spot.getSpotNumber() + ". This was the last available spot on this level!";
+                    return "Vehicle parked at spot " + spot.getSpotNumber() + ". This was the last available spot on this level.";
                 }
                 return "Vehicle parked at spot " + spot.getSpotNumber();
             }
