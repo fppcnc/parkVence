@@ -15,10 +15,11 @@ public class ParkingGarageTest {
 
     @BeforeAll
     public static void setup() {
-        // Initialize the garage with 2 levels, each with 3 spots
+        //initialize the garage with 2 levels, each with 3 spots
         garage = new ParkingGarage(2, 3);
     }
 
+    //test for parking
     @Test
     public void testParkVehicleSuccessfully() throws Exception {
         Vehicle car = new VehicleCar("ABC123");
@@ -26,6 +27,7 @@ public class ParkingGarageTest {
         assertTrue(result.contains("Vehicle parked at"));
     }
 
+    //test for parking same vehicle twice
     @Test
     public void testParkVehicleTwice() throws Exception {
         Vehicle car = new VehicleCar("ABC123");
@@ -34,20 +36,22 @@ public class ParkingGarageTest {
         assertTrue(result.contains("license plate ABC123 is already parked."));
     }
 
+    //test for parking a different vehicle with the same plate while the first one is currently parked
     @Test
     public void testParkDifferentVehicleWithSameLicense() throws Exception {
         Vehicle car = new VehicleCar("ABC123");
         garage.parkVehicle(car);
         Vehicle motorcycle = new VehicleMotorcycle("ABC123");
         String result = garage.parkVehicle(motorcycle);
-        assertEquals("A CAR with license plate ABC123 is already parked.", result);
+        assertEquals("Vehicle with license plate ABC123 is already parked.", result);
     }
 
+    //test to unpark unparked vehicle
     @Test
     public void testRemoveVehicleNotParked() throws Exception {
         Vehicle car = new VehicleCar("XYZ987");
         String result = garage.removeVehicle(car.getLicensePlate());
-        assertEquals("Vehicle with license plate XYZ987 successfully unparked", result);
+        assertEquals("Vehicle with license plate XYZ987 was not found in the garage", result);
     }
 
     @Test
@@ -56,6 +60,16 @@ public class ParkingGarageTest {
         garage.parkVehicle(car);  // First park the vehicle
         String result = garage.removeVehicle(car.getLicensePlate());
         assertEquals("Vehicle with license plate XYZ987 successfully unparked", result);
+    }
+
+    @Test
+    public void testParkUnparkCarThenMotorcycleWithSameLicense() throws Exception {
+        Vehicle car = new VehicleCar("SAME789");
+        garage.parkVehicle(car);  // First park the car
+        garage.removeVehicle("SAME789");  // Then unpark the car
+        Vehicle motorcycle = new VehicleMotorcycle("SAME789");
+        String result = garage.parkVehicle(motorcycle);
+        assertEquals("License plate SAME789 is already associated with a different type of vehicle.", result);
     }
 
     @Test

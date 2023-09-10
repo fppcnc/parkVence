@@ -39,7 +39,6 @@ public class VehicleActionFrame extends JFrame {
             Vehicle vehicle;
 
 
-
             String message = "";
             switch (actionType) {
                 case PARK:
