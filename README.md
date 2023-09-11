@@ -26,7 +26,7 @@ ParkVence ist ein Parkmanagementsystem, das in Java entwickelt wurde. Es ermögl
 1. Navigieren Sie zum Verzeichnis, das `parkVence.jar` enthält.
 2. Führen Sie das ausführbare Skript aus:
     - Für Windows: `run.bat`
-    - Für Linux/Mac: `./run.sh`
+    - Für Linux/Mac: `run.sh`
 
 ### Funktionen
 
@@ -34,9 +34,11 @@ ParkVence ist ein Parkmanagementsystem, das in Java entwickelt wurde. Es ermögl
 - **Fahrzeugverwaltung**: Parken, Ausparken und Finden von Fahrzeugen mit Leichtigkeit.
 
 
-Mitwirken
+## Mitwirken
 
 Pull-Anfragen sind willkommen. Bei größeren Änderungen öffnen Sie bitte zuerst ein Problem, um zu besprechen, was Sie ändern möchten.
 Lizenz
 
-Dieses Projekt steht unter der Lizenz [Ihr Lizenzname] - siehe die Datei LICENSE für Details.
+## Lizenz
+
+This project is licensed under the MIT License
