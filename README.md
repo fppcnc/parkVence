@@ -37,7 +37,6 @@ ParkVence ist ein Parkmanagementsystem, das in Java entwickelt wurde. Es ermögl
 ## Mitwirken
 
 Pull-Anfragen sind willkommen. Bei größeren Änderungen öffnen Sie bitte zuerst ein Problem, um zu besprechen, was Sie ändern möchten.
-Lizenz
 
 ## Lizenz
 
