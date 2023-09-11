@@ -19,14 +19,22 @@ ParkVence ist ein Parkmanagementsystem, das in Java entwickelt wurde. Es ermögl
 ### Voraussetzungen
 
 - Java Runtime Environment (JRE) 8 oder höher.
-
+- Java Development Kit (JDK)
 
 ### Installation
 
-1. Navigieren Sie zum Verzeichnis, das `parkVence.jar` enthält.
-2. Führen Sie das ausführbare Skript aus:
-    - Für Windows: `run.bat`
-    - Für Linux/Mac: `run.sh`
+1. Die Anwendung entpacken:
+Laden Sie die Datei parkVence.zip herunter und entpacken Sie sie an einem Ort auf Ihrem Computer.
+
+2. Zum Anwendungsverzeichnis navigieren:
+Öffnen Sie ein Terminal oder eine Eingabeaufforderung und navigieren Sie zu dem Verzeichnis, in dem Sie parkVence.zip entpackt haben.
+
+3. Die Anwendung ausführen:
+
+- Windows: Doppelklicken Sie auf die Datei run.bat oder führen Sie sie über die Eingabeaufforderung aus.
+- macOS/Linux: Führen Sie das Skript run.sh vom Terminal aus. Falls notwendig, erteilen Sie ihm Ausführungsrechte mit dem Befehl:
+
+
 
 ### Funktionen
 
