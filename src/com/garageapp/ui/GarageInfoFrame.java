@@ -28,11 +28,11 @@ public class GarageInfoFrame extends JFrame {
 
         //right side: Action buttons
         JPanel actionPanel = new JPanel(new GridLayout(3, 1));
-        JButton parkVehicleButton = new JButton("Park Vehicle");
+        JButton parkVehicleButton = new JButton("Fahrzeug einparken");
             parkVehicleButton.addActionListener(e -> new VehicleActionFrame(garage, VehicleActionFrame.ActionType.PARK, this).setVisible(true));
-        JButton unParkVehicleButton = new JButton("Unpark Vehicle");
+        JButton unParkVehicleButton = new JButton("Fahrzeug ausparken");
             unParkVehicleButton.addActionListener(e -> new VehicleActionFrame(garage, VehicleActionFrame.ActionType.UNPARK, this).setVisible(true));
-        JButton findVehicleButton = new JButton("Find Vehicle");
+        JButton findVehicleButton = new JButton("Fahrzeug finden");
             findVehicleButton.addActionListener(e -> new VehicleActionFrame(garage, VehicleActionFrame.ActionType.FIND, this).setVisible(true));
         actionPanel.add(parkVehicleButton);
         actionPanel.add(unParkVehicleButton);

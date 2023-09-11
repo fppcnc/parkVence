@@ -7,9 +7,11 @@ import java.text.NumberFormat;
 
 public class StaticGarageSetup extends JFrame {
 
-    //accept only int
+    //NumberFormatter to ensure only int are accepted
     private JFormattedTextField numLevelsField;
     private JFormattedTextField spotsPerLevelField;
+    JPanel levelsPanel = new JPanel();
+    JPanel buttonsPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
 
     public StaticGarageSetup() {
 
@@ -17,7 +19,7 @@ public class StaticGarageSetup extends JFrame {
         setSize(500, 200);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setLayout(new GridLayout(3, 2));
+        setLayout(new BorderLayout());
 
         //numberFormatter to ensure only int are accepted
         NumberFormat format = NumberFormat.getInstance();
@@ -26,12 +28,14 @@ public class StaticGarageSetup extends JFrame {
         formatter.setValueClass(Integer.class);
         formatter.setMinimum(0);
         formatter.setMaximum(Integer.MAX_VALUE);
-
         //will go ahead only on valid inputs
         formatter.setAllowsInvalid(false);
         formatter.setCommitsOnValidEdit(true);
 
 
+
+        levelsPanel.setLayout(new BoxLayout(levelsPanel, BoxLayout.Y_AXIS));
+        add(levelsPanel, BorderLayout.CENTER);
         JLabel numLevelsLabel = new JLabel("Anzahl der Etagen:");
         numLevelsField = new JFormattedTextField(formatter);
 
@@ -47,12 +51,31 @@ public class StaticGarageSetup extends JFrame {
                 this
         ));
 
-        add(numLevelsLabel);
-        add(numLevelsField);
-        add(spotsPerLevelLabel);
-        add(spotsPerLevelField);
-        add(new JLabel()); //dummy for positioning
-        add(setupButton);
+        //re open GarageSetupSelection frame
+        JButton backButton = new JButton("Zurück");
+        backButton.addActionListener(e -> {
+            this.dispose();
+            new GarageSetupSelection().setVisible(true);
+        });
+
+        JPanel panel = new JPanel();
+        panel.setLayout(new GridLayout(2, 2));
+
+        panel.add(numLevelsLabel);
+        panel.add(numLevelsField);
+        panel.add(spotsPerLevelLabel);
+        panel.add(spotsPerLevelField);
+        levelsPanel.add(panel);
+
+        buttonsPanel.add(backButton);
+        buttonsPanel.add(setupButton);
+
+        //buttons panel to the SOUTH region ensures it stays at the bottom
+        add(buttonsPanel, BorderLayout.SOUTH);
+
+
+
+
     }
 
 }

@@ -21,14 +21,14 @@ public class VehicleActionFrame extends JFrame {
         this.garageInfoFrame = garageInfoFrame;
 
         // Basic setup for the frame
-        setTitle("Vehicle Action");
+        setTitle("Fahrzeug Aktion");
         setSize(400, 250);
         setLocationRelativeTo(null);
         setLayout(new GridLayout(4, 1));
 
-        JLabel licenseLabel = new JLabel("Enter Vehicle License Plate:");
+        JLabel licenseLabel = new JLabel("Nummernschild eingeben:");
         JTextField licenseField = new JTextField();
-        vehicleTypeBox = new JComboBox<>(new String[]{"Car", "Motorcycle"});
+        vehicleTypeBox = new JComboBox<>(new String[]{"Auto", "Moto"});
         JButton submitButton = new JButton("Submit");
         //display it only when park is selected
         vehicleTypeBox.setVisible(actionType == ActionType.PARK);
@@ -43,7 +43,7 @@ public class VehicleActionFrame extends JFrame {
             switch (actionType) {
                 case PARK:
                     vehicleTypeBox.setVisible(true);
-                    if ("Car".equals(vehicleType)) {
+                    if ("Auto".equals(vehicleType)) {
                         try {
                             vehicle = new VehicleCar(licensePlate);
                         } catch (Exception ex) {
