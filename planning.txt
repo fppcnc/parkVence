@@ -63,6 +63,7 @@ UnitTesting with JUnit:
 - Unpark
 - Park Vehicle using plate that´s already currently parked
 - Park using same plate of different Vehicle´s type that´s already parked
-- Unpark vehicle
+- Unpark unparked vehicle
 - Park type of vehicle using plate associated to another type
--
+- Get info about parked vehicle
+- Get total/available spots

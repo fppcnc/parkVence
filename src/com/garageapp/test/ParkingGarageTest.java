@@ -24,7 +24,7 @@ public class ParkingGarageTest {
     public void testParkVehicleSuccessfully() throws Exception {
         Vehicle car = new VehicleCar("ABC123");
         String result = garage.parkVehicle(car);
-        assertTrue(result.contains("Vehicle parked at"));
+        assertTrue(result.contains("Fahrzeug geparkt auf Etage"));
     }
 
     //test for parking same vehicle twice
@@ -33,7 +33,7 @@ public class ParkingGarageTest {
         Vehicle car = new VehicleCar("ABC123");
         garage.parkVehicle(car);
         String result = garage.parkVehicle(car);
-        assertTrue(result.contains("license plate ABC123 is already parked."));
+        assertTrue(result.contains("Fahrzeug mit Kennzeichen ABC123 ist bereits geparkt."));
     }
 
     //test for parking a different vehicle with the same plate while the first one is currently parked
@@ -43,7 +43,7 @@ public class ParkingGarageTest {
         garage.parkVehicle(car);
         Vehicle motorcycle = new VehicleMotorcycle("ABC123");
         String result = garage.parkVehicle(motorcycle);
-        assertEquals("Vehicle with license plate ABC123 is already parked.", result);
+        assertEquals("Fahrzeug mit Kennzeichen ABC123 ist bereits geparkt.", result);
     }
 
     //test to unpark unparked vehicle
@@ -51,17 +51,20 @@ public class ParkingGarageTest {
     public void testRemoveVehicleNotParked() throws Exception {
         Vehicle car = new VehicleCar("XYZ987");
         String result = garage.removeVehicle(car.getLicensePlate());
-        assertEquals("Vehicle with license plate XYZ987 was not found in the garage", result);
+        assertEquals("Das Fahrzeug mit dem Kennzeichen XYZ987 ist nicht in der Garage geparkt.", result);
     }
 
+    //unpark
     @Test
     public void testRemoveParkedVehicle() throws Exception {
         Vehicle car = new VehicleCar("XYZ987");
         garage.parkVehicle(car);  // First park the vehicle
         String result = garage.removeVehicle(car.getLicensePlate());
-        assertEquals("Vehicle with license plate XYZ987 successfully unparked", result);
+        assertEquals("Fahrzeug mit Kennzeichen XYZ987 erfolgreich ausgeparkt.", result);
     }
 
+
+    //park motorcycle using an unparked Car´s plate
     @Test
     public void testParkUnparkCarThenMotorcycleWithSameLicense() throws Exception {
         Vehicle car = new VehicleCar("SAME789");
@@ -69,29 +72,33 @@ public class ParkingGarageTest {
         garage.removeVehicle("SAME789");  // Then unpark the car
         Vehicle motorcycle = new VehicleMotorcycle("SAME789");
         String result = garage.parkVehicle(motorcycle);
-        assertEquals("License plate SAME789 is already associated with a different type of vehicle.", result);
+        assertEquals("Das Kennzeichen SAME789 ist bereits einem anderen Fahrzeugtyp zugeordnet.", result);
     }
 
+    //get info for not parked Vehicle
     @Test
     public void testGetInfoForVehicleNotParked() throws Exception {
         String result = garage.getVehicleInfo("NOCAR1");
-        assertEquals("Vehicle with license plate NOCAR1 is not parked in the garage.", result);
+        assertEquals("Das Fahrzeug mit dem Kennzeichen NOCAR1 ist nicht in der Garage geparkt.", result);
     }
 
+    //get info about parked vehicle
     @Test
     public void testGetInfoForParkedVehicle() throws Exception {
         Vehicle car = new VehicleCar("INFO123");
         garage.parkVehicle(car);
         String result = garage.getVehicleInfo("INFO123");
-        assertTrue(result.contains("Vehicle with license plate INFO123 is parked at Level") && result.contains("Spot"));
+        assertTrue(result.contains("Das Fahrzeug mit dem Kennzeichen INFO123 ist geparkt im Etage") && result.contains("Platz"));
     }
 
+    //get total spots
     @Test
     public void testGetTotalSpots() {
         int totalSpots = garage.getTotalSpots();
-        assertEquals(6, totalSpots);  // 2 levels with 3 spots each
+        assertEquals(6, totalSpots);
     }
 
+    //get available spots
     @Test
     public void testGetAvailableSpots() throws Exception {
         int initialAvailableSpots = garage.getTotalAvailableSpots();

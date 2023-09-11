@@ -34,24 +34,24 @@ public class ParkingGarage {
         for (ParkingLevel level : levels) {
             for (ParkingSpot spot : level.getSpots()) {
                 if (spot.isOccupied() && spot.getParkedVehicle().getLicensePlate().equals(vehicle.getLicensePlate())) {
-                    return "Vehicle with license plate " + vehicle.getLicensePlate() + " is already parked.";
+                    return "Fahrzeug mit Kennzeichen " + vehicle.getLicensePlate() + " ist bereits geparkt.";
                 }
             }
         }
         //check if the vehicle's license plate is associated with a different type
         if (licenseToTypeMap.containsKey(vehicle.getLicensePlate()) &&
                 licenseToTypeMap.get(vehicle.getLicensePlate()) != vehicle.getVehicleType()) {
-            return "License plate " + vehicle.getLicensePlate() + " is already associated with a different type of vehicle.";
+            return "Das Kennzeichen " + vehicle.getLicensePlate() + " ist bereits einem anderen Fahrzeugtyp zugeordnet.";
         }
         //if vehicle is matching type-plate or is a new vehicle, go ahead and park it
         for (ParkingLevel level : levels) {
             String parkingResult = level.parkVehicle(vehicle);
-            if (!parkingResult.contains("No available spot")) {
+            if (!parkingResult.contains("keine Plätze frei")) {
                 licenseToTypeMap.put(vehicle.getLicensePlate(), vehicle.getVehicleType());
                 return parkingResult;
             }
         }
-        return "No available spot in the entire garage for vehicle with license: " + vehicle.getLicensePlate();
+        return "Kein freier Platz in der gesamten Garage für Fahrzeug mit Kennzeichen: " + vehicle.getLicensePlate();
     }
 
     //unpark parked vehicles
@@ -60,23 +60,22 @@ public class ParkingGarage {
             for (ParkingSpot spot : level.getSpots()) {
                 if (spot.isOccupied() && spot.getParkedVehicle().getLicensePlate().equals(licensePlate)) {
                     spot.removeVehicle();
-                    licenseToTypeMap.remove(licensePlate); // This line is crucial
-                    return "Vehicle with license plate " + licensePlate + " successfully unparked";
+                    return "Fahrzeug mit Kennzeichen " + licensePlate + " erfolgreich ausgeparkt.";
                 }
             }
         }
-        return "Vehicle with license plate " + licensePlate + " is not parked in the garage.";
+        return "Das Fahrzeug mit dem Kennzeichen " + licensePlate + " ist nicht in der Garage geparkt.";
     }
 
     public String getVehicleInfo(String licensePlate) {
         for (ParkingLevel level : levels) {
             for (ParkingSpot spot : level.getSpots()) {
                 if (spot.isOccupied() && spot.getParkedVehicle().getLicensePlate().equals(licensePlate)) {
-                    return "Vehicle with license plate " + licensePlate + " is parked at Level " + level.getLevelNumber() + ", Spot " + spot.getSpotNumber();
+                    return "Das Fahrzeug mit dem Kennzeichen " + licensePlate + " ist geparkt im Etage " + level.getLevelNumber() + ", Platz " + spot.getSpotNumber();
                 }
             }
         }
-        return "Vehicle with license plate " + licensePlate + " is not parked in the garage.";
+        return "Das Fahrzeug mit dem Kennzeichen " + licensePlate + " ist nicht in der Garage geparkt.";
     }
 
     public int getTotalAvailableSpots() {

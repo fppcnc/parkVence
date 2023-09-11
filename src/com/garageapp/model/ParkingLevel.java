@@ -30,24 +30,18 @@ public class ParkingLevel {
     }
 
     public String parkVehicle(Vehicle vehicle) {
-        //check if a vehicle with the same license plate is already parked
-        for (ParkingSpot spot : spots) {
-            if (spot.isOccupied() && spot.getParkedVehicle().getLicensePlate().equals(vehicle.getLicensePlate())) {
-                    return "A " + spot.getParkedVehicle().getVehicleType() + " with license plate " + vehicle.getLicensePlate() + " is already parked.";
-            }
-        }
-        //if not, then find an available spot and park the vehicle
+        //find an available spot and park the vehicle
         for (ParkingSpot spot : spots) {
             if (!spot.isOccupied()) {
                 spot.parkVehicle(vehicle);
                 availableSpots--;
                 if (availableSpots == 0) {
-                    return "Vehicle parked at level " + levelNumber + ", spot " + spot.getSpotNumber() + ". This was the last available spot on this level.";
+                    return "Fahrzeug geparkt auf Etage " + levelNumber + ", Platz " + spot.getSpotNumber() + ". Dies war der letzte verfügbare Platz auf dieser Etage.";
                 }
-                return "Vehicle parked at level " + levelNumber + ", spot " + spot.getSpotNumber();
+                return "Fahrzeug geparkt auf Etage " + levelNumber + ", Platz " + spot.getSpotNumber() + ".";
             }
         }
-        return "No available spots on this level.";
+        return "Auf dieser Etage sind keine Plätze frei.";
     }
 
     public void removeVehicleFromSpot(int spotNumber) {
