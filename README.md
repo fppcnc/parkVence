@@ -20,7 +20,7 @@ ParkVence ist ein Parkmanagementsystem, das in Java entwickelt wurde. Es ermögl
 ### Voraussetzungen
 
 - Java Runtime Environment (JRE) 8 oder höher.
-- Java Development Kit (JDK)
+- Java Development Kit (JDK) 20 oder höher
 
 ### Installation
 
