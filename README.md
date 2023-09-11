@@ -4,6 +4,7 @@
 
 ## Overview
 
+![parkVence](https://github.com/fppcnc/portfolio2/blob/master/public/assets/projectsPreview/parkVence.png?raw=true)
 ParkVence ist ein Parkmanagementsystem, das in Java entwickelt wurde. Es ermöglicht Benutzern, statische und dynamische Parkhäuser einzurichten und das Parken von Fahrzeugen darin zu verwalten. Das System unterstützt mehrere Ebenen in einem Parkhaus und verschiedene Fahrzeugtypen wie Autos und Motorräder.
 
 ## Merkmale:
